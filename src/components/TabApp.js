@@ -3,7 +3,6 @@ import Tabs from'@mui/material/Tabs';
 import Tab from'@mui/material/Tab';
 import Trainings from './Trainings';
 import Customers from './Customers';
-import { Stack } from '@mui/material';
 
 function TabApp() {
 
