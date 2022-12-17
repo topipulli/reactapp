@@ -2,32 +2,40 @@ import React, { useEffect, useState, } from "react";
 import { AgGridReact } from'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
-
+import Customers from "./Customers";
+import moment from "moment";
 
 function Trainings() {
     const [train, setTrain] = useState([]);
-
     const [isready, setReady] = useState(false);
   
-        useEffect(() => getTrain(), [])
-
+  
+        useEffect(() => getTrain(), []);
 
   const getTrain = () => {
-    fetch('https://customerrest.herokuapp.com/api/trainings')
+    fetch('https://customerrest.herokuapp.com/gettrainings')
     .then(response => response.json())
     .then(data => {
         setReady(true);
-        setTrain(data.content);
+        setTrain(data);
+        console.log(data)
     })
-  }
+    .catch(err => console.error(err))
 
-
-
+    }
+    
     
     const columns = [
         {headerName: 'Duration', field: "duration", sortable: true, filter: true},
         {headerName: 'Activity', field: "activity", sortable: true, filter: true},  
-     ]
+        {headerName: 'Date', field: "date", sortable: true, filter: true,
+         cellRenderer: row => moment().format('MMM Do YY, HH:MM')},  
+        {headerName: 'Customer', field: "firstname", 
+        valueGetter: (params) => {
+           return params.data.customer.firstname + ' ' + params.data.customer.lastname;
+        }
+        }
+    ]
 
 
 if (!isready){
