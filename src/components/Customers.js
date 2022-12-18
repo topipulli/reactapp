@@ -6,6 +6,8 @@ import { Button, Snackbar } from "@mui/material";
 import AddCustomer from "./AddCustomer";
 import EditCustomer from "./EditCustomer";
 import AddTraining from "./AddTraining";
+import CsvDownloadButton from "react-json-to-csv";
+
 
 
 function Customers() {
@@ -67,6 +69,7 @@ function Customers() {
     }
 
 
+
 const handleClose = () => {
     setOpen(false);
 }
@@ -110,6 +113,7 @@ else{
             columnDefs={columns}
             rowData={cust}>
             </AgGridReact>
+            <CsvDownloadButton data={cust} style={{margin: 20}}>Download customer data</CsvDownloadButton>
             <Snackbar open={open} handleClick={handleClick} message={message} autoHideDuration={6000} onClose={handleClose}  />
 
         </div>
