@@ -16,11 +16,11 @@ function TabApp() {
     <div>
 
        <Tabs  value={value} onChange={handleChange}>
-            <Tab value="one" label="TRAINING" />
-            <Tab value="two"label="CUSTOMERS" />
+            <Tab value="one" label="CUSTOMERS" />
+            <Tab value="two"label="TRAININGS" />
         </Tabs>   
-        {value === 'one' && <div><Trainings /></div>}   
-        {value === 'two' && <div><Customers /></div>}  
+        {value === 'one' && <div><Customers /></div>}   
+        {value === 'two' && <div><Trainings /></div>}  
     </div>
     );
     
