@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Calendar,  momentLocalizer,  Views } from 'react-big-calendar'
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { DateTime } from "luxon";
 import moment from "moment";
 
 
